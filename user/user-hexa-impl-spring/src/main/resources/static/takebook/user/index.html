@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+
+<div id="listPanel">
+    <h2>Liste d'utilisateur</h2>
+    <div v-if="list.length == 0">Aucun utilisateur</div>
+    <table v-if="list.length > 0">
+        <tr>
+            <td>Prénom</td>
+            <td>Nom</td>
+        </tr>
+        <tr v-for="(each) in list">
+            <td>{{ each.firstName }}</td>
+            <td>{{ each.lastName }}</td>
+        </tr>
+    </table>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

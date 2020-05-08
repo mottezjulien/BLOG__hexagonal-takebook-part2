@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+
+<div id="listPanel">
+    <h2>Liste des donnée des livres</h2>
+    <input type="text" v-model="searchValue" />
+    <button v-on:click="search">Rechercher</button>
+    <div v-if="list.length == 0">Aucun livre</div>
+    <table v-if="list.length > 0">
+        <tr>
+            <td>Titre</td>
+            <td>Auteur</td>
+        </tr>
+        <tr v-for="(each) in list">
+            <td>{{ each.title }}</td>
+            <td>{{ each.authorName }}</td>
+        </tr>
+    </table>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

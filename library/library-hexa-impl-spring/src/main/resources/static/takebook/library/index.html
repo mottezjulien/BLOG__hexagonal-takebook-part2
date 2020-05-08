@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="modal/jsmodal.js" type="text/javascript"></script>
+    <link href="modal/jsmodal.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+
+</head>
+<body>
+    <div id="listPanel">
+        <h2>Liste des livres des bibliothèque</h2>
+        <div v-if="books.length == 0">Aucun livre</div>
+        <table v-if="books.length > 0">
+            <tr>
+                <td>Titre</td>
+                <td>Auteur</td>
+                <td>Statut</td>
+                <td>Action</td>
+            </tr>
+            <tr v-for="(book) in books">
+                <td>{{ book.data.title }}</td>
+                <td>{{ book.data.authorName }}</td>
+                <td>{{ detailsBook(book) }}</td>
+                <td>
+                    <button v-if="book.state == 'STORED'"   v-on:click="borrow(book)">Emprunter</button>
+                    <button v-if="book.state == 'RETURNED'" v-on:click="putAway(book)">Ranger</button>
+                    <button v-if="book.state == 'BORROWED'" v-on:click="ret(book)">Rendre</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
